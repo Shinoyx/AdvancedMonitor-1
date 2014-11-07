@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.netlynxtech.advancedmonitor.MainActivity" >
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/bConnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/etWifiPassword"
+        android:layout_below="@+id/etWifiPassword"
+        android:text="@string/activity_choose_device_button_connect"
+        fbutton:buttonColor="@color/fbutton_color_turquoise"
+        fbutton:cornerRadius="0dp"
+        fbutton:shadowColor="@color/fbutton_color_turquoise"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/sDeviceList"
+        android:text="@string/connected_device"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/sDeviceList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etWifiPassword"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sWifi"
+        android:layout_below="@+id/sDeviceList"
+        android:text="@string/wifi_to_connect_to_ssid"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/sWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etWifiPassword"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etWifiPassword"
+        android:layout_below="@+id/sWifi"
+        android:text="@string/wifi_to_connect_to_password"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/etWifiPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        android:ems="10"
+        android:hint="@string/wifi_to_connect_to_password"
+        android:text="24AC3A4A5C" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bConnect"
+        android:layout_below="@+id/bConnect"
+        android:text="Note : User ID is currently hardcoded to my phone number. And Wifi to connect to is hardcoded to connect to 'YEN'"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

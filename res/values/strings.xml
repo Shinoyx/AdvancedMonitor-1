@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SensorLynx</string>
+    <string name="activity_tutorial">Device Registration</string>
+    <string name="activity_users">Users</string>
+    <string name="activity_users_access">Users Access</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="connected_device">Connected Device</string>
+    <string name="wifi_to_connect_to_ssid">WiFi to connect to</string>
+    <string name="wifi_to_connect_to_password">WiFi\'s Password</string>
+    <string name="tutorial_two_setup">Setup!</string>
+    <string name="activity_choose_device_button_connect">Connect</string>
+    <string name="activity_update_io_description">Update Descriptions</string>
+    <string name="menu_users">Users</string>
+    <string name="menu_edit_device">Edit Device Details</string>
+    <string name="menu_map">Map</string>
+    <string name="menu_chart">Chart</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_add_users">Add Users</string>
+    <string name="menu_add_device">Add Devices</string>
+    <string name="menu_add_members">Add Members</string>
+    <string name="menu_show_requests">Show Requests</string>
+    <string name="menu_show_messages">Messages</string>
+    <string name="edit_device_description">Device Description</string>
+    <string name="edit_device_input1_description">Input1\'s Description</string>
+    <string name="edit_device_input2_description">Input2\'s Description</string>
+    <string name="edit_device_output1_description">Output1\'s Description</string>
+    <string name="edit_device_output2_description">Output2\'s Description</string>
+    <string name="check_pin_name">PIN Check</string>
+    <string name="history_name">12 Hour History</string>
+    <string name="menu_refresh_text">Refresh</string>
+    <string name="menu_map_text">Update Location</string>
+    <string name="retreive_pin">Retrieve Pin</string>
+    <string name="check_pin">Check Pin</string>
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="pin_hint">Enter PIN number</string>
+    <string name="password_hint">Enter password</string>
+    <string name="password_hint_again">Enter password again</string>
+    <string name="gcm_id_retrieved_retrying">Retrying GCM ID broadcast..</string>
+    <string name="gcm_id_retrieved_waiting">Waiting for GCM ID broadcast..</string>
+    <string name="gcm_id_retrieved_successful">Successfully retrieved GCM ID</string>
+    <string name="gcm_id_retrieved_failed">Failed to retrieve GCM ID.</string>
+    <string name="welcome_activity_next">Let\'s Go!</string>
+    <string name="dba">dBA</string>
+    <string name="leq_one_hour">Leq 1hr : </string>
+    <string name="leq_twelve_hour">Leq 12hr : </string>
+    <string name="pref_vibration">Vibration</string>
+    <string name="pref_vibration_on">On</string>
+    <string name="pref_vibration_off">Off</string>
+    <string name="pref_housekeep_title">Housekeep Alert Message</string>
+    <string name="pref_housekeep_summary">Show only X alerts</string>
+    <string name="pref_housekeep_dialog_title">How many alerts to show</string>
+    <string name="site_location_show_text">Update device to Current Location</string>
+    <string name="site_location_get_location">Get Current Location</string>
+    <string name="site_location_loading">Getting Location..</string>
+    <string name="menu_monitoring_alert_text">Show Alerts</string>
+    <string name="menu_search_text">Search</string>
+    <string name="pref_timing_title">24 hour / AM PM</string>
+    <string name="pref_timing_summary">Show timing in AM/PM or in 24 hour</string>
+    <string name="pref_about_title">About Us</string>
+    <string name="pref_about_summary">NetLynx Technology Pte Ltd \u00A9 (Click for more info)</string>
+    <string name="pref_reset_title">Reset Settings</string>
+    <string name="pref_reset_summary">WARNING : This will reset all settings and you will need to register again. Continue?</string>
+    <string name="pref_about_dialog_text"><![CDATA[NetLynx Technology is a software and hardware engineering company that focuses on the development and deployment of innovative products and solutions for the communications and automotive sectors.<br>Our mission is to deliver quality products and services to the marketplace, backed up by our dependable technical support.<br><br><b>Communications</b><br><br>Our communications department has been focusing the applications that tap on the services provided by the Service providers, such as SMS / GPRS / 3G / Voice, and even broadcast media such as Digital Video Broadcast, as well as GPS.<br><br><b>Automotive</b><br><br>Our Automotive department focuses on the automotive consumer electronics. We have introduced products such as GPS boxes, DVB Receivers and other electronic controls that caters to the demanding conditions of a vehicular environment.<br><br><b>Communications - Automotive Integration. Unlocking the potential of a connected Vehicle</b><br><br>We believe that the integration of communications and Automotive will be the next big advancement, similar to the merger of communications and information technology ( InfoComm ) a decade ago.]]></string>
+    <string name="password_login_text">Login</string>
+    <string name="password_skip_text">Skip for now</string>
+    <string name="pref_password_title">Login Password</string>
+    <string name="pref_password_summary">Password will be needed when opening application</string>
+    <string name="password_dialog_title">Set Password</string>
+    <string name="password_dialog_message">Set password for login.\nTo remove password, just remove everything.\n(Spaces will be remove at the start and end of password)</string>
+    <string name="password_info_text_initial">This password is used to prevent unauthorized login.\nSet a password now or you can do so in the future\n(Menu > Settings)</string>
+    <string name="password_info_text_existing">Please login.</string>
+    <string name="password_info_text_wrong">Wrong Password!</string>
+    <string name="password_info_password_null">Enter both passwords or click "Skip Now"</string>
+    <string name="password_info_password_notequal">Both passwords do not match</string>
+    <string name="version">Version</string>
+    <string name="about_us_title">Environmental Noise Monitoring System</string>
+    <string name="about_us_company_one">Absolute Instrument Systems</string>
+    <string name="about_us_company_two">NetLynx Technology Pte Ltd</string>
+    <string name="password_activity_set_password">Set Password</string>
+    <string name="pref_force_sound_title">Force Notification Sound</string>
+    <string name="pref_force_sound_summary">Force notification sound even during Silent or Vibration mode</string>
+    <string name="pref_remote_reset_dialog_title">Secret Phrase</string>
+    <string name="pref_remote_reset_dialog_message">If ever your phone gets stolen, sending this secret phrase will reset the application so no changes can take place.</string>
+    <string name="pref_remote_reset_title">Remote Reset</string>
+    <string name="pref_remote_reset_summary">Set your secret phrase so that you can reset this application if your phone gets stolen.</string>
+    <string name="menu_graph">Show History Graph</string>
+
+    <string-array name="roles_array_text_string">
+        <item>Administrator</item>
+        <item>Controller</item>
+        <item>Viewer</item>
+    </string-array>
+    <string-array name="roles_array_value">
+        <item>9</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
+
+</resources>
