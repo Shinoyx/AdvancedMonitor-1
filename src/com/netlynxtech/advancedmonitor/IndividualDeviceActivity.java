@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import mehdi.sakout.dynamicbox.DynamicBox;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -120,6 +121,18 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 								String minTemp = etMinTempThreshold.getText().toString();
 								new AsyncTask<String, Void, Void>() {
 									String res = "", maxTemp, minTemp;
+									ProgressDialog pd;
+
+									@Override
+									protected void onPreExecute() {
+										super.onPreExecute();
+										pd = new ProgressDialog(IndividualDeviceActivity.this);
+										pd.setCancelable(false);
+										pd.setCanceledOnTouchOutside(false);
+										pd.setMessage("Updating threshold..");
+										pd.setIndeterminate(true);
+										pd.show();
+									}
 
 									@Override
 									protected Void doInBackground(String... params) {
@@ -132,6 +145,9 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 									@Override
 									protected void onPostExecute(Void result) {
 										super.onPostExecute(result);
+										if (pd != null && pd.isShowing()) {
+											pd.dismiss();
+										}
 										IndividualDeviceActivity.this.runOnUiThread(new Runnable() {
 
 											@Override
@@ -193,6 +209,18 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 								String minTemp = etMinTempThreshold.getText().toString();
 								new AsyncTask<String, Void, Void>() {
 									String res = "", maxTemp, minTemp;
+									ProgressDialog pd;
+
+									@Override
+									protected void onPreExecute() {
+										super.onPreExecute();
+										pd = new ProgressDialog(IndividualDeviceActivity.this);
+										pd.setCancelable(false);
+										pd.setCanceledOnTouchOutside(false);
+										pd.setMessage("Updating threshold..");
+										pd.setIndeterminate(true);
+										pd.show();
+									}
 
 									@Override
 									protected Void doInBackground(String... params) {
@@ -205,6 +233,9 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 									@Override
 									protected void onPostExecute(Void result) {
 										super.onPostExecute(result);
+										if (pd != null && pd.isShowing()) {
+											pd.dismiss();
+										}
 										IndividualDeviceActivity.this.runOnUiThread(new Runnable() {
 
 											@Override
