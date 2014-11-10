@@ -114,39 +114,47 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 					@Override
 					public void onClick(View v) {
 						if (etMaxTempThreshold.getText().toString().length() > 0 && etMinTempThreshold.getText().toString().length() > 0) {
-							final String maxTemp = etMaxTempThreshold.getText().toString();
-							String minTemp = etMinTempThreshold.getText().toString();
-							new AsyncTask<String, Void, Void>() {
-								String res = "", maxTemp, minTemp;
+							if (Long.valueOf(etMaxTempThreshold.getText().toString()) > Long.valueOf(etMinTempThreshold.getText().toString())) {
 
-								@Override
-								protected Void doInBackground(String... params) {
-									maxTemp = params[0];
-									minTemp = params[1];
-									res = new WebRequestAPI(IndividualDeviceActivity.this).UpdateTemperatureThreshold(deviceId, maxTemp, minTemp);
-									return null;
-								}
+								final String maxTemp = etMaxTempThreshold.getText().toString();
+								String minTemp = etMinTempThreshold.getText().toString();
+								new AsyncTask<String, Void, Void>() {
+									String res = "", maxTemp, minTemp;
 
-								@Override
-								protected void onPostExecute(Void result) {
-									super.onPostExecute(result);
-									IndividualDeviceActivity.this.runOnUiThread(new Runnable() {
+									@Override
+									protected Void doInBackground(String... params) {
+										maxTemp = params[0];
+										minTemp = params[1];
+										res = new WebRequestAPI(IndividualDeviceActivity.this).UpdateTemperatureThreshold(deviceId, maxTemp, minTemp);
+										return null;
+									}
 
-										@Override
-										public void run() {
-											if (res.equals("success")) {
-												device.setTemperatureHi(maxTemp);
-												device.setTemperatureLo(minTemp);
-												Toast.makeText(IndividualDeviceActivity.this, "Successfully updated threshold", Toast.LENGTH_SHORT).show();
-												dialog.dismiss();
-											} else {
-												Toast.makeText(IndividualDeviceActivity.this, "Failed to update threshold", Toast.LENGTH_SHORT).show();
+									@Override
+									protected void onPostExecute(Void result) {
+										super.onPostExecute(result);
+										IndividualDeviceActivity.this.runOnUiThread(new Runnable() {
+
+											@Override
+											public void run() {
+												if (res.equals("success")) {
+													device.setTemperatureHi(maxTemp);
+													device.setTemperatureLo(minTemp);
+													Toast.makeText(IndividualDeviceActivity.this, "Successfully updated threshold", Toast.LENGTH_SHORT).show();
+													task = null;
+													task = new loadData();
+													task.execute();
+													dialog.dismiss();
+												} else {
+													Toast.makeText(IndividualDeviceActivity.this, "Failed to update threshold", Toast.LENGTH_SHORT).show();
+												}
 											}
-										}
-									});
-								}
+										});
+									}
 
-							}.execute(maxTemp, minTemp);
+								}.execute(maxTemp, minTemp);
+							} else {
+								Toast.makeText(IndividualDeviceActivity.this, "Minimum must be higher than the maximum", Toast.LENGTH_SHORT).show();
+							}
 						}
 					}
 				});
@@ -180,39 +188,46 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 					@Override
 					public void onClick(View v) {
 						if (etMaxTempThreshold.getText().toString().length() > 0 && etMinTempThreshold.getText().toString().length() > 0) {
-							final String maxTemp = etMaxTempThreshold.getText().toString();
-							String minTemp = etMinTempThreshold.getText().toString();
-							new AsyncTask<String, Void, Void>() {
-								String res = "", maxTemp, minTemp;
+							if (Long.valueOf(etMaxTempThreshold.getText().toString()) > Long.valueOf(etMinTempThreshold.getText().toString())) {
+								final String maxTemp = etMaxTempThreshold.getText().toString();
+								String minTemp = etMinTempThreshold.getText().toString();
+								new AsyncTask<String, Void, Void>() {
+									String res = "", maxTemp, minTemp;
 
-								@Override
-								protected Void doInBackground(String... params) {
-									maxTemp = params[0];
-									minTemp = params[1];
-									res = new WebRequestAPI(IndividualDeviceActivity.this).UpdateHumidityThreshold(deviceId, maxTemp, minTemp);
-									return null;
-								}
+									@Override
+									protected Void doInBackground(String... params) {
+										maxTemp = params[0];
+										minTemp = params[1];
+										res = new WebRequestAPI(IndividualDeviceActivity.this).UpdateHumidityThreshold(deviceId, maxTemp, minTemp);
+										return null;
+									}
 
-								@Override
-								protected void onPostExecute(Void result) {
-									super.onPostExecute(result);
-									IndividualDeviceActivity.this.runOnUiThread(new Runnable() {
+									@Override
+									protected void onPostExecute(Void result) {
+										super.onPostExecute(result);
+										IndividualDeviceActivity.this.runOnUiThread(new Runnable() {
 
-										@Override
-										public void run() {
-											if (res.equals("success")) {
-												device.setHumidityHi(maxTemp);
-												device.setHumidityLo(minTemp);
-												Toast.makeText(IndividualDeviceActivity.this, "Successfully updated threshold", Toast.LENGTH_SHORT).show();
-												dialog.dismiss();
-											} else {
-												Toast.makeText(IndividualDeviceActivity.this, "Failed to update threshold", Toast.LENGTH_SHORT).show();
+											@Override
+											public void run() {
+												if (res.equals("success")) {
+													device.setHumidityHi(maxTemp);
+													device.setHumidityLo(minTemp);
+													Toast.makeText(IndividualDeviceActivity.this, "Successfully updated threshold", Toast.LENGTH_SHORT).show();
+													task = null;
+													task = new loadData();
+													task.execute();
+													dialog.dismiss();
+												} else {
+													Toast.makeText(IndividualDeviceActivity.this, "Failed to update threshold", Toast.LENGTH_SHORT).show();
+												}
 											}
-										}
-									});
-								}
+										});
+									}
 
-							}.execute(maxTemp, minTemp);
+								}.execute(maxTemp, minTemp);
+							} else {
+								Toast.makeText(IndividualDeviceActivity.this, "Minimum must be higher than the maximum", Toast.LENGTH_SHORT).show();
+							}
 						}
 					}
 				});

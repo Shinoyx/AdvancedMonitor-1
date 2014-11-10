@@ -6,6 +6,7 @@ import mehdi.sakout.dynamicbox.DynamicBox;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.netlynxtech.advancedmonitor.adapters.MessageAdapter;
@@ -17,11 +18,14 @@ public class MessagesActivity extends ActionBarActivity {
 	DynamicBox box;
 	ListView lvMessage;
 	getMessages mTask;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_messages);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		lvMessage = (ListView) findViewById(R.id.lvMessages);
 		box = new DynamicBox(MessagesActivity.this, lvMessage);
 		mTask = null;
@@ -63,6 +67,17 @@ public class MessagesActivity extends ActionBarActivity {
 			data = new WebRequestAPI(MessagesActivity.this).GetMessages();
 			return null;
 		}
+	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
