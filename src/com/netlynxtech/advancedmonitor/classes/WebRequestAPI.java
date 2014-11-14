@@ -27,6 +27,78 @@ public class WebRequestAPI {
 		return locationList;
 	}
 
+	public ArrayList<String> GetLocation(String deviceId) {
+		ArrayList<String> loc = new ArrayList<String>();
+		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_GETLOCATION_METHOD_NAME); // create new soap object
+		rpc.addProperty("UDID", new Utils(context).getDeviceUniqueId());
+		rpc.addProperty("deviceID", deviceId);
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		envelope.dotNet = true;
+		envelope.setOutputSoapObject(rpc);
+		HttpTransportSE ht = new HttpTransportSE(Consts.NOISELYNX_API_URL); // set base link
+		ht.debug = true;
+		try {
+			Log.e("WebRequest", "GetLocation");
+			ht.call(Consts.NOISELYNX_API_GETLOCATION_SOAP_ACTION, envelope); // call web request
+			System.err.println(ht.responseDump);
+			SoapObject result = (SoapObject) envelope.getResponse(); // get response
+			Log.e("RESULT", result.toString());
+			if (result.getProperty(0).toString().equals("1")) {
+				Log.e("Latitude", result.getProperty("Latitude").toString());
+				loc.add(result.getProperty("Latitude").toString());
+				loc.add(result.getProperty("Longitude").toString());
+			}
+		} catch (SocketTimeoutException e) {
+			e.printStackTrace();
+			// return "Timed out. Please try again.";
+		} catch (HttpResponseException e) {
+			e.printStackTrace();
+			// return e.getMessage();
+		} catch (IOException e) {
+			e.printStackTrace();
+			// return e.getMessage();
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+			// return e.getMessage();
+		}
+		return loc;
+	}
+
+	public String DeleteDevice(String deviceId) {
+		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_DELETEDEVICE_METHOD_NAME); // create new soap object
+		rpc.addProperty("UDID", new Utils(context).getDeviceUniqueId());
+		rpc.addProperty("deviceID", deviceId);
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		envelope.dotNet = true;
+		envelope.setOutputSoapObject(rpc);
+		HttpTransportSE ht = new HttpTransportSE(Consts.NOISELYNX_API_URL); // set base link
+		ht.debug = true;
+		try {
+			Log.e("WebRequest", "DeleteDevice");
+			ht.call(Consts.NOISELYNX_API_DELETEDEVICE_SOAP_ACTION, envelope); // call web request
+			System.err.println(ht.responseDump);
+			SoapObject result = (SoapObject) envelope.getResponse(); // get response
+			Log.e("RESULT", result.toString());
+			if (result.getProperty(0).toString().equals("1")) {
+				return "success";
+			} else {
+				return result.getProperty(1).toString();
+			}
+		} catch (SocketTimeoutException e) {
+			e.printStackTrace();
+			return "Timed out. Please try again.";
+		} catch (HttpResponseException e) {
+			e.printStackTrace();
+			return e.getMessage();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return e.getMessage();
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+			return e.getMessage();
+		}
+	}
+
 	public String UpdateHumidityThreshold(String deviceId, String hiThreshold, String lowThreshold) {
 		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_UPDATEHUMIDITYTHRESHOLD_METHOD_NAME); // create new soap object
 		rpc.addProperty("UDID", new Utils(context).getDeviceUniqueId());
@@ -141,6 +213,8 @@ public class WebRequestAPI {
 	}
 
 	public ArrayList<Message> GetMessages() {
+		SQLFunctions sql = new SQLFunctions(context);
+		sql.open();
 		ArrayList<Message> list = new ArrayList<Message>();
 		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_GETMESSAGES_METHOD_NAME);
 		rpc.addProperty("UDID", new Utils(context).getDeviceUniqueId());
@@ -166,7 +240,8 @@ public class WebRequestAPI {
 				d.setMessageType(object.getProperty(Consts.MESSAGES_MESSAGE_MESSAGETYPE).toString());
 				d.setMessage(object.getProperty(Consts.MESSAGES_MESSAGE_MESSAGE).toString());
 				d.setAckRequired(object.getProperty(Consts.MESSAGES_MESSAGE_ACKREQUIRED).toString());
-				list.add(d);
+				// list.add(d);
+				sql.insertMessage(d);
 			}
 
 		} catch (SocketTimeoutException e) {
@@ -183,6 +258,8 @@ public class WebRequestAPI {
 			e.printStackTrace();
 			// return e.getMessage();
 		}
+		list = sql.loadEventMessages();
+		sql.close();
 		return list;
 	}
 
@@ -675,6 +752,7 @@ public class WebRequestAPI {
 				map.setTemperatureState(object.getProperty(Consts.GETDEVICES_TEMPERATURESTATE).toString());
 				map.setLatitude(object.getProperty(Consts.GETDEVICES_LATITUDE).toString());
 				map.setLongitude(object.getProperty(Consts.GETDEVICES_LONGITUDE).toString());
+				map.setRole(object.getProperty(Consts.ROLE).toString());
 				list.add(map);
 			}
 
@@ -744,42 +822,7 @@ public class WebRequestAPI {
 			map.setTemperatureState(result.getProperty(Consts.GETDEVICES_TEMPERATURESTATE).toString());
 			map.setLatitude(result.getProperty(Consts.GETDEVICES_LATITUDE).toString());
 			map.setLongitude(result.getProperty(Consts.GETDEVICES_LONGITUDE).toString());
-
-		} catch (SocketTimeoutException e) {
-			e.printStackTrace();
-			// Toast.makeText(context, "Timed out. Please try again", Toast.LENGTH_SHORT).show();
-
-		} catch (HttpResponseException e) {
-			e.printStackTrace();
-			// return e.getMessage();
-		} catch (IOException e) {
-			e.printStackTrace();
-			// return e.getMessage();
-		} catch (XmlPullParserException e) {
-			e.printStackTrace();
-			// return e.getMessage();
-		}
-		return map;
-	}
-
-	public ArrayList<String> GetLocation(String deviceId) {
-		ArrayList<String> map = new ArrayList<String>();
-		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_GETLOCATION_METHOD_NAME);
-		rpc.addProperty("UDID", new Utils(context).getDeviceUniqueId());
-		rpc.addProperty("deviceID", deviceId);
-		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-		envelope.dotNet = true;
-		envelope.setOutputSoapObject(rpc);
-		HttpTransportSE ht = new HttpTransportSE(Consts.NOISELYNX_API_URL);
-		ht.debug = true;
-		try {
-			ht.call(Consts.NOISELYNX_API_GETLOCATION_SOAP_ACTION, envelope);
-			System.err.println(ht.responseDump);
-			SoapObject result = (SoapObject) envelope.getResponse();
-			map.add(result.getProperty(Consts.RESULTCODE).toString());
-			map.add(result.getProperty(Consts.RESULTDESCRIPTION).toString());
-			map.add(result.getProperty(Consts.ERRORCODE).toString());
-
+			map.setRole(result.getProperty(Consts.ROLE).toString());
 		} catch (SocketTimeoutException e) {
 			e.printStackTrace();
 			// Toast.makeText(context, "Timed out. Please try again", Toast.LENGTH_SHORT).show();

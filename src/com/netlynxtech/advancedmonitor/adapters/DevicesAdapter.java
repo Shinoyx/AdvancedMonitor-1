@@ -262,6 +262,10 @@ public class DevicesAdapter extends BaseAdapter {
 				}.execute();
 			}
 		});
+		if (!item.getRole().equals("9") && !item.getRole().equals("2")) {
+			holder.sOutputOne.setEnabled(false);
+			holder.sOutputTwo.setEnabled(false);
+		}
 		return convertView;
 	}
 }

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import mehdi.sakout.dynamicbox.DynamicBox;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -53,12 +55,14 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 	ImageView ivInputOne, ivInputTwo;
 	Switch sOutputOne, sOutputTwo;
 	boolean isProcessing = false, loadedBefore = false;
+	deleteDevice mDeleteDevice;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent i = getIntent();
 		deviceId = i.getStringExtra("deviceId");
+		Log.e("DeviceId", deviceId);
 		deviceDescription = i.getStringExtra("deviceDescription");
 		if (deviceId.length() < 1) {
 			finish();
@@ -96,11 +100,15 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 				dialog.setCancelable(false);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.setContentView(R.layout.dialog_temperature_threshold);
-				dialog.setTitle("Set Threshold");
+				dialog.setTitle("Set Threshold (Temperature)");
 				final EditText etMinTempThreshold = (EditText) dialog.findViewById(R.id.etMinTempThreshold);
 				etMinTempThreshold.setText(device.getTemperatureLo());
 				final EditText etMaxTempThreshold = (EditText) dialog.findViewById(R.id.etMaxTempThreshold);
 				etMaxTempThreshold.setText(device.getTemperatureHi());
+				TextView tvIndicatorMin = (TextView) dialog.findViewById(R.id.tvIndicatorMin);
+				tvIndicatorMin.setText((char) 0x00B0 + "c");
+				TextView tvIndicatorMax = (TextView) dialog.findViewById(R.id.tvIndicatorMax);
+				tvIndicatorMax.setText((char) 0x00B0 + "c");
 				Button bCancel = (Button) dialog.findViewById(R.id.bCancel);
 				bCancel.setOnClickListener(new OnClickListener() {
 
@@ -190,6 +198,11 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 				etMinTempThreshold.setText(device.getHumidityLo());
 				final EditText etMaxTempThreshold = (EditText) dialog.findViewById(R.id.etMaxTempThreshold);
 				etMaxTempThreshold.setText(device.getHumidityHi());
+				TextView tvIndicatorMin = (TextView) dialog.findViewById(R.id.tvIndicatorMin);
+				tvIndicatorMin.setText("%");
+				TextView tvIndicatorMax = (TextView) dialog.findViewById(R.id.tvIndicatorMax);
+				tvIndicatorMax.setText("%");
+
 				Button bCancel = (Button) dialog.findViewById(R.id.bCancel);
 				bCancel.setOnClickListener(new OnClickListener() {
 
@@ -420,6 +433,15 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 				}.execute();
 			}
 		});
+		Log.e("ROLE", device.getRole());
+		if (!device.getRole().equals("9") && !device.getRole().equals("2")) {
+			sOutputOne.setEnabled(false);
+			sOutputTwo.setEnabled(false);
+		}
+		if (!device.getRole().equals("9")) {
+			tvDeviceTemperature.setEnabled(false);
+			tvDeviceHumidity.setEnabled(false);
+		}
 		isProcessing = false;
 		loadedBefore = true;
 	}
@@ -592,6 +614,9 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case R.id.menu_individual_map:
+			startActivity(new Intent(IndividualDeviceActivity.this, MapsActivity.class).putExtra("device", device));
+			break;
 		case R.id.menu_individual_users:
 			startActivity(new Intent(IndividualDeviceActivity.this, UsersActivity.class).putExtra("deviceId", device.getDeviceID()));
 			break;
@@ -616,10 +641,74 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 			}
 			startActivity(i);
 			break;
+		case R.id.menu_delete_device:
+			showDeleteDialog();
+			break;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void showDeleteDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(IndividualDeviceActivity.this);
+		builder.setMessage("Delete device?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				mDeleteDevice = null;
+				mDeleteDevice = new deleteDevice();
+				mDeleteDevice.execute();
+			}
+		}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		}).show();
+	}
+
+	private class deleteDevice extends AsyncTask<Void, Void, Void> {
+		ProgressDialog pd;
+		String res = "";
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pd = new ProgressDialog(IndividualDeviceActivity.this);
+			pd.setCancelable(false);
+			pd.setCanceledOnTouchOutside(false);
+			pd.setMessage("Deleting device..");
+			pd.show();
+
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			IndividualDeviceActivity.this.runOnUiThread(new Runnable() {
+
+				@Override
+				public void run() {
+					if (pd != null && pd.isShowing()) {
+						pd.cancel();
+					}
+					if (res.equals("success")) {
+						finish();
+					} else {
+						Toast.makeText(IndividualDeviceActivity.this, res, Toast.LENGTH_LONG).show();
+					}
+				}
+			});
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			res = new WebRequestAPI(IndividualDeviceActivity.this).DeleteDevice(deviceId);
+			return null;
+		}
+
 	}
 
 	@Override

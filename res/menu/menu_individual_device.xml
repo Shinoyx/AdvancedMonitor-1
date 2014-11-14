@@ -19,9 +19,9 @@
         android:orderInCategory="100"
         android:title="@string/menu_map"/>
     <item
-        android:id="@+id/menu_individual_chart"
+        android:id="@+id/menu_delete_device"
         android:orderInCategory="100"
-        android:title="@string/menu_chart"/>
+        android:title="@string/menu_delete_device"/>
     <item
         android:id="@+id/menu_individual_users"
         android:orderInCategory="100"

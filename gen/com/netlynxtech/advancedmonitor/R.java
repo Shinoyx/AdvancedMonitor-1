@@ -17,8 +17,12 @@ public final class R {
         public static final int abc_slide_out_top=0x7f040005;
     }
     public static final class array {
-        public static final int roles_array_text_string=0x7f0d0000;
-        public static final int roles_array_value=0x7f0d0001;
+        public static final int pref_housekeep_shown=0x7f0d0000;
+        public static final int pref_housekeep_values=0x7f0d0001;
+        public static final int pref_timing_shown=0x7f0d0002;
+        public static final int pref_timing_values=0x7f0d0003;
+        public static final int roles_array_text_string=0x7f0d0004;
+        public static final int roles_array_value=0x7f0d0005;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1936,8 +1940,8 @@ containing a value of this type.
         public static final int vertical_line=0x7f02009d;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f0a009a;
-        public static final int RelativeLayout2=0x7f0a009b;
+        public static final int RelativeLayout1=0x7f0a009c;
+        public static final int RelativeLayout2=0x7f0a009d;
         public static final int action_bar=0x7f0a0036;
         public static final int action_bar_activity_content=0x7f0a0015;
         public static final int action_bar_container=0x7f0a0035;
@@ -1946,9 +1950,9 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0a003d;
         public static final int action_bar_title=0x7f0a003c;
         public static final int action_context_bar=0x7f0a0037;
-        public static final int action_individual_chart=0x7f0a00a8;
-        public static final int action_individual_map=0x7f0a00a7;
-        public static final int action_individual_users=0x7f0a00a9;
+        public static final int action_individual_chart=0x7f0a00aa;
+        public static final int action_individual_map=0x7f0a00a9;
+        public static final int action_individual_users=0x7f0a00ab;
         public static final int action_menu_divider=0x7f0a0016;
         public static final int action_menu_presenter=0x7f0a0017;
         public static final int action_mode_close_button=0x7f0a003e;
@@ -1963,7 +1967,7 @@ containing a value of this type.
         public static final int bRequestDecline=0x7f0a0088;
         public static final int bRequestPin=0x7f0a008a;
         public static final int bSendRequest=0x7f0a007c;
-        public static final int bSetup=0x7f0a00a6;
+        public static final int bSetup=0x7f0a00a8;
         public static final int bUpdate=0x7f0a0069;
         public static final int beginning=0x7f0a0011;
         public static final int book_now=0x7f0a0030;
@@ -1977,7 +1981,7 @@ containing a value of this type.
         public static final int classic=0x7f0a0031;
         public static final int collapseActionView=0x7f0a000d;
         public static final int default_activity_button=0x7f0a0042;
-        public static final int determinate_progress_indicator=0x7f0a00a3;
+        public static final int determinate_progress_indicator=0x7f0a00a5;
         public static final int dialog=0x7f0a000e;
         public static final int disableHome=0x7f0a0008;
         public static final int dropdown=0x7f0a000f;
@@ -1995,11 +1999,11 @@ containing a value of this type.
         public static final int etPhoneNumber=0x7f0a0079;
         public static final int etPinNo=0x7f0a0094;
         public static final int etWifiPassword=0x7f0a0075;
-        public static final int exception_Wrapper=0x7f0a009c;
-        public static final int exception_button=0x7f0a009f;
-        public static final int exception_message=0x7f0a009e;
-        public static final int exception_progressbar=0x7f0a00a0;
-        public static final int exception_title=0x7f0a009d;
+        public static final int exception_Wrapper=0x7f0a009e;
+        public static final int exception_button=0x7f0a00a1;
+        public static final int exception_message=0x7f0a00a0;
+        public static final int exception_progressbar=0x7f0a00a2;
+        public static final int exception_title=0x7f0a009f;
         public static final int expand_activities_button=0x7f0a0040;
         public static final int expanded_menu=0x7f0a0046;
         public static final int grayscale=0x7f0a0032;
@@ -2011,9 +2015,9 @@ containing a value of this type.
         public static final int icon=0x7f0a0044;
         public static final int ifRoom=0x7f0a000a;
         public static final int image=0x7f0a0041;
-        public static final int imageView1=0x7f0a00a5;
+        public static final int imageView1=0x7f0a00a7;
         public static final int indeterminate=0x7f0a001c;
-        public static final int indeterminate_progress_indicator=0x7f0a00a2;
+        public static final int indeterminate_progress_indicator=0x7f0a00a4;
         public static final int ivDeleteUser=0x7f0a0090;
         public static final int ivInputOne=0x7f0a005e;
         public static final int ivInputTwo=0x7f0a0063;
@@ -2027,28 +2031,29 @@ containing a value of this type.
         public static final int lvUsers=0x7f0a008e;
         public static final int map=0x7f0a0078;
         public static final int match_parent=0x7f0a002c;
-        public static final int menu_add_device=0x7f0a00ac;
-        public static final int menu_add_members=0x7f0a00ad;
-        public static final int menu_add_users=0x7f0a00b3;
-        public static final int menu_edit_device=0x7f0a00af;
-        public static final int menu_individual_chart=0x7f0a00b1;
-        public static final int menu_individual_map=0x7f0a00b0;
-        public static final int menu_individual_refresh=0x7f0a00aa;
-        public static final int menu_individual_users=0x7f0a00b2;
-        public static final int menu_show_messages=0x7f0a00ab;
-        public static final int menu_show_requests=0x7f0a00ae;
+        public static final int menu_add_device=0x7f0a00ae;
+        public static final int menu_add_members=0x7f0a00af;
+        public static final int menu_add_users=0x7f0a00b6;
+        public static final int menu_delete_device=0x7f0a00b4;
+        public static final int menu_edit_device=0x7f0a00b2;
+        public static final int menu_individual_map=0x7f0a00b3;
+        public static final int menu_individual_refresh=0x7f0a00ac;
+        public static final int menu_individual_users=0x7f0a00b5;
+        public static final int menu_settings=0x7f0a00b1;
+        public static final int menu_show_messages=0x7f0a00ad;
+        public static final int menu_show_requests=0x7f0a00b0;
         public static final int middle=0x7f0a0012;
         public static final int monochrome=0x7f0a0033;
         public static final int never=0x7f0a0009;
         public static final int none=0x7f0a0010;
         public static final int normal=0x7f0a0000;
-        public static final int pager=0x7f0a00a4;
+        public static final int pager=0x7f0a00a6;
         public static final int pie=0x7f0a001b;
         public static final int production=0x7f0a0027;
         public static final int progress_circular=0x7f0a0018;
         public static final int progress_horizontal=0x7f0a0019;
         public static final int radio=0x7f0a0049;
-        public static final int refresh_button=0x7f0a00a1;
+        public static final int refresh_button=0x7f0a00a3;
         public static final int rlIndividualDevice=0x7f0a0058;
         public static final int rl_device_details=0x7f0a0059;
         public static final int sDeviceList=0x7f0a0076;
@@ -2098,6 +2103,8 @@ containing a value of this type.
         public static final int tvDeviceVoltage=0x7f0a0068;
         public static final int tvError=0x7f0a008b;
         public static final int tvGCMID=0x7f0a0093;
+        public static final int tvIndicatorMax=0x7f0a009a;
+        public static final int tvIndicatorMin=0x7f0a009b;
         public static final int tvInputOneDescription=0x7f0a005d;
         public static final int tvInputTwoDescription=0x7f0a0060;
         public static final int tvMessage=0x7f0a007f;
@@ -2242,9 +2249,9 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f08000d;
-        public static final int about_us_company_one=0x7f08007d;
-        public static final int about_us_company_two=0x7f08007e;
-        public static final int about_us_title=0x7f08007c;
+        public static final int about_us_company_one=0x7f08007f;
+        public static final int about_us_company_two=0x7f080080;
+        public static final int about_us_title=0x7f08007e;
         public static final int action_settings=0x7f080036;
         public static final int activity_choose_device_button_connect=0x7f08003b;
         public static final int activity_tutorial=0x7f080032;
@@ -2258,8 +2265,8 @@ containing a value of this type.
         public static final int auth_client_play_services_err_notification_msg=0x7f080016;
         public static final int auth_client_requested_by_msg=0x7f080017;
         public static final int auth_client_using_bad_version_title=0x7f080012;
-        public static final int check_pin=0x7f080051;
-        public static final int check_pin_name=0x7f08004c;
+        public static final int check_pin=0x7f080053;
+        public static final int check_pin_name=0x7f08004e;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -2350,85 +2357,87 @@ containing a value of this type.
          */
         public static final int common_signin_button_text_long=0x7f080030;
         public static final int connected_device=0x7f080037;
-        public static final int dba=0x7f08005b;
-        public static final int edit_device_description=0x7f080047;
-        public static final int edit_device_input1_description=0x7f080048;
-        public static final int edit_device_input2_description=0x7f080049;
-        public static final int edit_device_output1_description=0x7f08004a;
-        public static final int edit_device_output2_description=0x7f08004b;
+        public static final int dba=0x7f08005d;
+        public static final int edit_device_description=0x7f080049;
+        public static final int edit_device_input1_description=0x7f08004a;
+        public static final int edit_device_input2_description=0x7f08004b;
+        public static final int edit_device_output1_description=0x7f08004c;
+        public static final int edit_device_output2_description=0x7f08004d;
         public static final int empty_string=0x7f080010;
-        public static final int gcm_id_retrieved_failed=0x7f080059;
-        public static final int gcm_id_retrieved_retrying=0x7f080056;
-        public static final int gcm_id_retrieved_successful=0x7f080058;
-        public static final int gcm_id_retrieved_waiting=0x7f080057;
+        public static final int gcm_id_retrieved_failed=0x7f08005b;
+        public static final int gcm_id_retrieved_retrying=0x7f080058;
+        public static final int gcm_id_retrieved_successful=0x7f08005a;
+        public static final int gcm_id_retrieved_waiting=0x7f080059;
         public static final int hello_world=0x7f080035;
-        public static final int history_name=0x7f08004d;
-        public static final int leq_one_hour=0x7f08005c;
-        public static final int leq_twelve_hour=0x7f08005d;
-        public static final int menu_add_device=0x7f080043;
-        public static final int menu_add_members=0x7f080044;
-        public static final int menu_add_users=0x7f080042;
-        public static final int menu_chart=0x7f080040;
+        public static final int history_name=0x7f08004f;
+        public static final int leq_one_hour=0x7f08005e;
+        public static final int leq_twelve_hour=0x7f08005f;
+        public static final int menu_add_device=0x7f080045;
+        public static final int menu_add_members=0x7f080046;
+        public static final int menu_add_users=0x7f080044;
+        public static final int menu_chart=0x7f080041;
+        public static final int menu_delete_device=0x7f080042;
         public static final int menu_edit_device=0x7f08003e;
-        public static final int menu_graph=0x7f080086;
-        public static final int menu_map=0x7f08003f;
-        public static final int menu_map_text=0x7f08004f;
-        public static final int menu_monitoring_alert_text=0x7f080067;
-        public static final int menu_refresh=0x7f080041;
-        public static final int menu_refresh_text=0x7f08004e;
-        public static final int menu_search_text=0x7f080068;
-        public static final int menu_show_messages=0x7f080046;
-        public static final int menu_show_requests=0x7f080045;
+        public static final int menu_graph=0x7f080088;
+        public static final int menu_map=0x7f080040;
+        public static final int menu_map_text=0x7f080051;
+        public static final int menu_monitoring_alert_text=0x7f080069;
+        public static final int menu_refresh=0x7f080043;
+        public static final int menu_refresh_text=0x7f080050;
+        public static final int menu_search_text=0x7f08006a;
+        public static final int menu_settings=0x7f08003f;
+        public static final int menu_show_messages=0x7f080048;
+        public static final int menu_show_requests=0x7f080047;
         public static final int menu_users=0x7f08003d;
-        public static final int password_activity_set_password=0x7f08007f;
-        public static final int password_dialog_message=0x7f080075;
-        public static final int password_dialog_title=0x7f080074;
-        public static final int password_hint=0x7f080054;
-        public static final int password_hint_again=0x7f080055;
-        public static final int password_info_password_notequal=0x7f08007a;
-        public static final int password_info_password_null=0x7f080079;
-        public static final int password_info_text_existing=0x7f080077;
-        public static final int password_info_text_initial=0x7f080076;
-        public static final int password_info_text_wrong=0x7f080078;
-        public static final int password_login_text=0x7f080070;
-        public static final int password_skip_text=0x7f080071;
-        public static final int phone_number_hint=0x7f080052;
-        public static final int pin_hint=0x7f080053;
-        public static final int pref_about_dialog_text=0x7f08006f;
-        public static final int pref_about_summary=0x7f08006c;
-        public static final int pref_about_title=0x7f08006b;
-        public static final int pref_force_sound_summary=0x7f080081;
-        public static final int pref_force_sound_title=0x7f080080;
-        public static final int pref_housekeep_dialog_title=0x7f080063;
-        public static final int pref_housekeep_summary=0x7f080062;
-        public static final int pref_housekeep_title=0x7f080061;
-        public static final int pref_password_summary=0x7f080073;
-        public static final int pref_password_title=0x7f080072;
-        public static final int pref_remote_reset_dialog_message=0x7f080083;
-        public static final int pref_remote_reset_dialog_title=0x7f080082;
-        public static final int pref_remote_reset_summary=0x7f080085;
-        public static final int pref_remote_reset_title=0x7f080084;
-        public static final int pref_reset_summary=0x7f08006e;
-        public static final int pref_reset_title=0x7f08006d;
-        public static final int pref_timing_summary=0x7f08006a;
-        public static final int pref_timing_title=0x7f080069;
-        public static final int pref_vibration=0x7f08005e;
-        public static final int pref_vibration_off=0x7f080060;
-        public static final int pref_vibration_on=0x7f08005f;
-        public static final int retreive_pin=0x7f080050;
+        public static final int password_activity_set_password=0x7f080081;
+        public static final int password_dialog_message=0x7f080077;
+        public static final int password_dialog_title=0x7f080076;
+        public static final int password_hint=0x7f080056;
+        public static final int password_hint_again=0x7f080057;
+        public static final int password_info_password_notequal=0x7f08007c;
+        public static final int password_info_password_null=0x7f08007b;
+        public static final int password_info_text_existing=0x7f080079;
+        public static final int password_info_text_initial=0x7f080078;
+        public static final int password_info_text_wrong=0x7f08007a;
+        public static final int password_login_text=0x7f080072;
+        public static final int password_skip_text=0x7f080073;
+        public static final int phone_number_hint=0x7f080054;
+        public static final int pin_hint=0x7f080055;
+        public static final int pref_about_dialog_text=0x7f080071;
+        public static final int pref_about_summary=0x7f08006e;
+        public static final int pref_about_title=0x7f08006d;
+        public static final int pref_force_sound_summary=0x7f080083;
+        public static final int pref_force_sound_title=0x7f080082;
+        public static final int pref_housekeep_dialog_title=0x7f080065;
+        public static final int pref_housekeep_summary=0x7f080064;
+        public static final int pref_housekeep_title=0x7f080063;
+        public static final int pref_password_summary=0x7f080075;
+        public static final int pref_password_title=0x7f080074;
+        public static final int pref_remote_reset_dialog_message=0x7f080085;
+        public static final int pref_remote_reset_dialog_title=0x7f080084;
+        public static final int pref_remote_reset_summary=0x7f080087;
+        public static final int pref_remote_reset_title=0x7f080086;
+        public static final int pref_reset_summary=0x7f080070;
+        public static final int pref_reset_title=0x7f08006f;
+        public static final int pref_timing_summary=0x7f08006c;
+        public static final int pref_timing_title=0x7f08006b;
+        public static final int pref_vibration=0x7f080060;
+        public static final int pref_vibration_off=0x7f080062;
+        public static final int pref_vibration_on=0x7f080061;
+        public static final int retreive_pin=0x7f080052;
         public static final int retry=0x7f080011;
-        public static final int site_location_get_location=0x7f080065;
-        public static final int site_location_loading=0x7f080066;
-        public static final int site_location_show_text=0x7f080064;
+        public static final int site_location_get_location=0x7f080067;
+        public static final int site_location_loading=0x7f080068;
+        public static final int site_location_show_text=0x7f080066;
         public static final int textOff=0x7f080001;
         public static final int textOn=0x7f080000;
         public static final int tutorial_two_setup=0x7f08003a;
-        public static final int version=0x7f08007b;
+        public static final int version=0x7f08007d;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */
         public static final int wallet_buy_button_place_holder=0x7f080031;
-        public static final int welcome_activity_next=0x7f08005a;
+        public static final int welcome_activity_next=0x7f08005c;
         public static final int wifi_to_connect_to_password=0x7f080039;
         public static final int wifi_to_connect_to_ssid=0x7f080038;
     }
@@ -2673,6 +2682,7 @@ containing a value of this type.
     }
     public static final class xml {
         public static final int line_point_formatter_with_plf1=0x7f050000;
+        public static final int settings_activity=0x7f050001;
     }
     public static final class styleable {
         /**  ============================================ 

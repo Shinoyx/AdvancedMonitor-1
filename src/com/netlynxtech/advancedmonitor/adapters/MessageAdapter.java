@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.netlynxtech.advancedmonitor.R;
 import com.netlynxtech.advancedmonitor.classes.Message;
+import com.netlynxtech.advancedmonitor.classes.SQLFunctions;
 import com.netlynxtech.advancedmonitor.classes.Utils;
 import com.netlynxtech.advancedmonitor.classes.WebRequestAPI;
 
@@ -73,12 +74,13 @@ public class MessageAdapter extends BaseAdapter {
 		}
 
 		Message d = data.get(position);
+		final String messageId = d.getMessageId();
 		final String eventId = d.getEventId();
 		// String udid = d.getUdid();
 		holder.tvTitle.setText(d.getTitle());
 		holder.tvTimestamp.setText(Utils.parseTime(d.getTimestamp()));
 		holder.tvMessage.setText(d.getMessage());
-		if (d.getAckRequired().equals("1")) {
+		if (d.getAckRequired().equals("1") && d.getAckDone().equals("0")) {
 			holder.bAck.setVisibility(View.VISIBLE);
 			holder.bAck.setOnClickListener(new OnClickListener() {
 
@@ -110,8 +112,12 @@ public class MessageAdapter extends BaseAdapter {
 									((Activity) context).runOnUiThread(new Runnable() {
 										@Override
 										public void run() {
-											if (res.equals("success")) {
-											holder.bAck.setVisibility(View.GONE);
+											if (!res.equals("success")) {
+												SQLFunctions sql = new SQLFunctions(context);
+												sql.open();
+												sql.setMessageAckDone(messageId);
+												sql.close();
+												holder.bAck.setVisibility(View.GONE);
 											} else {
 												Toast.makeText(context, res, Toast.LENGTH_SHORT).show();
 											}

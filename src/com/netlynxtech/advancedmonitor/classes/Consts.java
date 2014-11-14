@@ -45,9 +45,6 @@ public class Consts {
 	final static public String NOISELYNX_API_VERIFYPIN_SOAP_ACTION = "http://NetlynxTech.com/VerifyPIN";
 	final static public String NOISELYNX_API_VERIFYPIN_METHOD_NAME = "VerifyPIN";
 
-	final static public String NOISELYNX_API_GETLOCATION_SOAP_ACTION = "http://NetlynxTech.com/GetLocation";
-	final static public String NOISELYNX_API_GETLOCATION_METHOD_NAME = "GetLocation";
-
 	final static public String NOISELYNX_API_SETOUTPUT_SOAP_ACTION = "http://NetlynxTech.com/SetOutput";
 	final static public String NOISELYNX_API_SETOUTPUT_METHOD_NAME = "SetOutput";
 
@@ -78,7 +75,12 @@ public class Consts {
 	final static public String NOISELYNX_API_UPDATEHUMIDITYTHRESHOLD_SOAP_ACTION = "http://NetlynxTech.com/UpdateHumidityThresolds";
 	final static public String NOISELYNX_API_UPDATEHUMIDITYTHRESHOLD_METHOD_NAME = "UpdateHumidityThresolds";
 
-	
+	final static public String NOISELYNX_API_DELETEDEVICE_SOAP_ACTION = "http://NetlynxTech.com/DeleteDevice";
+	final static public String NOISELYNX_API_DELETEDEVICE_METHOD_NAME = "DeleteDevice";
+
+	final static public String NOISELYNX_API_GETLOCATION_SOAP_ACTION = "http://NetlynxTech.com/GetLocation";
+	final static public String NOISELYNX_API_GETLOCATION_METHOD_NAME = "GetLocation";
+
 	final static public String NOISELYNX_API_REMOVEMEMBERFROMDEVICE_SOAP_ACTION = "http://NetlynxTech.com/RemoveMemberFromDevice";
 	final static public String NOISELYNX_API_REMOVEMEMBERFROMDEVICE_METHOD_NAME = "RemoveMemberFromDevice";
 
@@ -159,6 +161,7 @@ public class Consts {
 	final static public String MESSAGES_MESSAGE_MESSAGETYPE = "MessageType";
 	final static public String MESSAGES_MESSAGE_MESSAGE = "Message";
 	final static public String MESSAGES_MESSAGE_ACKREQUIRED = "AckRequired";
+	final static public String MESSAGES_MESSAGE_ACKDONE = "AckDone";
 
 	final static public String THRESHOLD_TIMESPAN = "TimeSpan";
 	final static public String THRESHOLD_THRESHOLD = "Threhold"; // GRAMMAR ERROR CAREFUL

@@ -6,7 +6,15 @@ public class Device implements Serializable {
 
 	String version, deviceID, description, temperature, humidity, voltage, input1, descriptionInput1, input2, descriptionInput2, output1, descriptionOutput1, output2, descriptionOutput2, timestamp,
 			enableTemperature, enableHumidity, enableInput1, enableInput2, enableOutput1, enableOutput2, temperatureHi, temperatureLo, humidityHi, humidityLo, reverseLogicInput1, reverseLogicInput2,
-			reverseLogicOutput1, reverseLogicOutput2, temperatureState, humidityState, latitude, longitude;
+			reverseLogicOutput1, reverseLogicOutput2, temperatureState, humidityState, latitude, longitude, role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public String getVersion() {
 		return version;

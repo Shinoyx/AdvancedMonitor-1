@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/etMaxTempThreshold"
         android:layout_below="@+id/textView1"
         android:ems="10"
         android:inputType="numberDecimal" />
@@ -51,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/textView2"
+        android:layout_toLeftOf="@+id/textView3"
         android:ems="10"
         android:inputType="numberDecimal" >
 
@@ -73,5 +73,29 @@
         fbutton:shadowColor="@color/fbutton_default_shadow_color"
         fbutton:shadowEnabled="true"
         fbutton:shadowHeight="5dp" />
+
+    <TextView
+        android:id="@+id/tvIndicatorMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/etMaxTempThreshold"
+        android:layout_alignBottom="@+id/etMaxTempThreshold"
+        android:layout_alignLeft="@+id/tvIndicatorMin"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="20dp"
+        android:text="Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvIndicatorMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/etMinTempThreshold"
+        android:layout_alignBottom="@+id/etMinTempThreshold"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/etMaxTempThreshold"
+        android:paddingLeft="20dp"
+        android:text="Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

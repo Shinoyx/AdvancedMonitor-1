@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Settings" >
+        <RingtonePreference
+            android:defaultValue="content://settings/system/notification_sound"
+            android:key="pref_notification_ack"
+            android:ringtoneType="notification"
+            android:showDefault="true"
+            android:title="Notification Tones for Acknowledgement Notices" >
+        </RingtonePreference>
+        <RingtonePreference
+            android:defaultValue="content://settings/system/notification_sound"
+            android:key="pref_notification_normal"
+            android:ringtoneType="notification"
+            android:showDefault="true"
+            android:title="Notification Tones for other notices" >
+        </RingtonePreference>
+
+        <ListPreference
+            android:defaultValue="20"
+            android:dialogTitle="@string/pref_housekeep_dialog_title"
+            android:entries="@array/pref_housekeep_shown"
+            android:entryValues="@array/pref_housekeep_values"
+            android:key="pref_housekeep"
+            android:summary="@string/pref_housekeep_summary"
+            android:title="@string/pref_housekeep_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_force_sound"
+            android:summary="@string/pref_force_sound_summary"
+            android:title="@string/pref_force_sound_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Misc" >
+        <Preference
+            android:key="pref_about"
+            android:title="@string/pref_about_title" />
+        <Preference
+            android:key="pref_reset"
+            android:summary="@string/pref_reset_summary"
+            android:title="@string/pref_reset_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

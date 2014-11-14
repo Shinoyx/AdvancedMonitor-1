@@ -3,13 +3,18 @@ package com.netlynxtech.advancedmonitor;
 import java.util.ArrayList;
 
 import mehdi.sakout.dynamicbox.DynamicBox;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.netlynxtech.advancedmonitor.adapters.MessageAdapter;
+import com.netlynxtech.advancedmonitor.classes.Device;
 import com.netlynxtech.advancedmonitor.classes.Message;
 import com.netlynxtech.advancedmonitor.classes.WebRequestAPI;
 
@@ -27,6 +32,14 @@ public class MessagesActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		lvMessage = (ListView) findViewById(R.id.lvMessages);
+		lvMessage.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Message m = data.get(position);
+				startActivity(new Intent(MessagesActivity.this, SubMessagesActivity.class).putExtra("message", m));
+			}
+		});
 		box = new DynamicBox(MessagesActivity.this, lvMessage);
 		mTask = null;
 		mTask = new getMessages();

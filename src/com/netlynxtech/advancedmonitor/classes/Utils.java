@@ -1,6 +1,7 @@
 package com.netlynxtech.advancedmonitor.classes;
 
 import com.netlynxtech.advancedmonitor.*;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +25,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
@@ -38,6 +44,92 @@ public class Utils {
 
 	public Utils(Context con) {
 		this.context = con;
+	}
+
+	public String getHousekeep() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+		return sp.getString("pref_housekeep", "20");
+	}
+
+	public void showNotifications(String shortTitle, String title, String message, String messageType) {
+		SecurePreferences sp = new SecurePreferences(context);
+		long[] vibration;
+		if (sp.getBoolean("pref_vibration", false)) {
+			vibration = new long[] { 100, 250, 100, 500 };
+		} else {
+			vibration = new long[] { 0 };
+		}
+		SharedPreferences getAlarms = PreferenceManager.getDefaultSharedPreferences(context);
+		String alarms = "";
+		if (messageType.equals("1")) {
+			alarms = getAlarms.getString("pref_notification_ack", "default ringtone");
+		} else {
+			alarms = getAlarms.getString("pref_notification_normal", "default ringtone");
+		}
+		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+		Intent myIntent = new Intent(context, ReceivedMemberPermissionActivity.class);
+		myIntent.putExtra("notification", "true");
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, myIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
+		NotificationCompat.Builder myNotification = new NotificationCompat.Builder(context);
+		myNotification.setContentTitle(title).setContentText(message).setTicker(shortTitle).setWhen(System.currentTimeMillis()).setContentIntent(pendingIntent).setAutoCancel(true)
+				.setSmallIcon(R.drawable.ic_launcher).setSound(Uri.parse(alarms)).setVibrate(vibration);
+
+		notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.notify(999, myNotification.build());
+
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+		if (settings.getBoolean("pref_force_sound", false)) {
+			AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
+			switch (am.getRingerMode()) {
+			case AudioManager.RINGER_MODE_SILENT:
+			case AudioManager.RINGER_MODE_VIBRATE:
+				playNotificationSound(messageType);
+				break;
+			}
+		}
+	}
+
+	private MediaPlayer mMediaPlayer;
+
+	public void playNotificationSound(String messageType) {
+		SharedPreferences getAlarms = PreferenceManager.getDefaultSharedPreferences(context);
+		String alarms = "";
+		if (messageType.equals("1")) {
+			alarms = getAlarms.getString("pref_notification_ack", "default ringtone");
+		} else {
+			alarms = getAlarms.getString("pref_notification_normal", "default ringtone");
+		}
+		Uri uri = Uri.parse(alarms);
+		playSound(context, uri);
+		new Timer().schedule(new TimerTask() {
+			@Override
+			public void run() {
+				mMediaPlayer.stop();
+			}
+		}, 5000);
+		//
+	}
+
+	private void playSound(Context context, Uri alert) {
+		mMediaPlayer = new MediaPlayer();
+		try {
+			mMediaPlayer.setDataSource(context, alert);
+			final AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+			if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM) != 0) {
+				mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+				mMediaPlayer.prepare();
+				mMediaPlayer.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getRingtoneName(String path) {
+		Uri uri = Uri.parse(path);
+		Ringtone ringtone = RingtoneManager.getRingtone(context, uri);
+		return ringtone.getTitle(context);
 	}
 
 	public static String getTimeFromDateTime(String datetime) {
@@ -83,7 +175,7 @@ public class Utils {
 			return datetime;
 		}
 	}
-	
+
 	public static String parseTime(String datetime) {
 		final String pattern = "yyyy-MM-dd'T'HH:mm:ss";
 		final SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.getDefault());
@@ -198,39 +290,5 @@ public class Utils {
 		SecurePreferences sp = new SecurePreferences(context);
 		String id = sp.getString(Consts.PREFERENCES_GCMID, "");
 		return id;
-	}
-
-	public void showNotifications(String shortTitle, String title, String message) {
-		SecurePreferences sp = new SecurePreferences(context);
-		long[] vibration;
-		if (sp.getBoolean("pref_vibration", false)) {
-			vibration = new long[] { 100, 250, 100, 500 };
-		} else {
-			vibration = new long[] { 0 };
-		}
-		SharedPreferences getAlarms = PreferenceManager.getDefaultSharedPreferences(context);
-		String alarms = getAlarms.getString("pref_notification", "default ringtone");
-		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-		Intent myIntent = new Intent(context, ReceivedMemberPermissionActivity.class);
-		myIntent.putExtra("notification", "true");
-		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, myIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
-		NotificationCompat.Builder myNotification = new NotificationCompat.Builder(context);
-		myNotification.setContentTitle(title).setContentText(message).setTicker(shortTitle).setWhen(System.currentTimeMillis()).setContentIntent(pendingIntent).setAutoCancel(true)
-				.setSmallIcon(R.drawable.ic_launcher).setSound(Uri.parse(alarms)).setVibrate(vibration);
-
-		notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-		notificationManager.notify(999, myNotification.build());
-
-		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-		if (settings.getBoolean("pref_force_sound", false)) {
-			AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-
-			switch (am.getRingerMode()) {
-			case AudioManager.RINGER_MODE_SILENT:
-			case AudioManager.RINGER_MODE_VIBRATE:
-				// playNotificationSound();
-				break;
-			}
-		}
 	}
 }
