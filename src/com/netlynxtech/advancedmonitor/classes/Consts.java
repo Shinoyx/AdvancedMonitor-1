@@ -83,6 +83,9 @@ public class Consts {
 
 	final static public String NOISELYNX_API_REMOVEMEMBERFROMDEVICE_SOAP_ACTION = "http://NetlynxTech.com/RemoveMemberFromDevice";
 	final static public String NOISELYNX_API_REMOVEMEMBERFROMDEVICE_METHOD_NAME = "RemoveMemberFromDevice";
+	
+	final static public String NOISELYNX_API_UPDATELOCATION_SOAP_ACTION = "http://NetlynxTech.com/UpdateLocation";
+	final static public String NOISELYNX_API_UPDATELOCATION_METHOD_NAME = "UpdateLocation";
 
 	final static public String RESULTCODE = "ResultCode";
 	final static public String RESULTDESCRIPTION = "ResultDescription";

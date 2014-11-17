@@ -193,7 +193,7 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 				dialog.setCancelable(false);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.setContentView(R.layout.dialog_temperature_threshold);
-				dialog.setTitle("Set Threshold");
+				dialog.setTitle("Set Threshold (Humidity)");
 				final EditText etMinTempThreshold = (EditText) dialog.findViewById(R.id.etMinTempThreshold);
 				etMinTempThreshold.setText(device.getHumidityLo());
 				final EditText etMaxTempThreshold = (EditText) dialog.findViewById(R.id.etMaxTempThreshold);

@@ -27,6 +27,43 @@ public class WebRequestAPI {
 		return locationList;
 	}
 
+	public String UpdateLocation(String deviceID, String latitude, String longitude) {
+		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_UPDATELOCATION_METHOD_NAME);
+		rpc.addProperty("UDID", new Utils(context).getDeviceUniqueId());
+		rpc.addProperty("deviceID", deviceID);
+		rpc.addProperty("latitude", latitude);
+		rpc.addProperty("longitude", longitude);
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		envelope.dotNet = true;
+		envelope.setOutputSoapObject(rpc);
+		HttpTransportSE ht = new HttpTransportSE(Consts.NOISELYNX_API_URL, Consts.WEBREQUEST_TIMEOUT); // 20 seconds timeout
+		ht.debug = true;
+		try {
+			// Log.e("WebRequest", "TRY!");
+			ht.call(Consts.NOISELYNX_API_UPDATELOCATION_SOAP_ACTION, envelope);
+			System.err.println(ht.responseDump);
+			SoapObject result = (SoapObject) envelope.getResponse();
+			if (result.getProperty(0).toString().equals("1")) {
+				return "success";
+			} else {
+				return result.getProperty(1).toString();
+			}
+		} catch (SocketTimeoutException e) {
+			e.printStackTrace();
+			return "Timed out. Please try again.";
+		} catch (HttpResponseException e) {
+			e.printStackTrace();
+			// return e.getMessage();
+		} catch (IOException e) {
+			e.printStackTrace();
+			// return e.getMessage();
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+			// return e.getMessage();
+		}
+		return "failed";
+	}
+
 	public ArrayList<String> GetLocation(String deviceId) {
 		ArrayList<String> loc = new ArrayList<String>();
 		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_GETLOCATION_METHOD_NAME); // create new soap object
