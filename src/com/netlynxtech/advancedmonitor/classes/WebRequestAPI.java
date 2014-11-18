@@ -436,6 +436,7 @@ public class WebRequestAPI {
 
 	public String RespondToMemberRequest(String deviceId, String responseType, String remarks) {
 		SoapObject rpc = new SoapObject(Consts.NAMESPACE, Consts.NOISELYNX_API_RESPONDTOMEMBERREQUEST_METHOD_NAME); // create new soap object
+
 		rpc.addProperty("UDID", new Utils(context).getDeviceUniqueId());
 		Log.e("UDID", new Utils(context).getDeviceUniqueId());
 		rpc.addProperty("deviceID", deviceId); // set parameter

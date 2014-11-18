@@ -80,7 +80,7 @@ public class Consts {
 
 	final static public String NOISELYNX_API_GETLOCATION_SOAP_ACTION = "http://NetlynxTech.com/GetLocation";
 	final static public String NOISELYNX_API_GETLOCATION_METHOD_NAME = "GetLocation";
-
+	
 	final static public String NOISELYNX_API_REMOVEMEMBERFROMDEVICE_SOAP_ACTION = "http://NetlynxTech.com/RemoveMemberFromDevice";
 	final static public String NOISELYNX_API_REMOVEMEMBERFROMDEVICE_METHOD_NAME = "RemoveMemberFromDevice";
 	
@@ -132,6 +132,7 @@ public class Consts {
 
 	final static public String NOISELYNX_API_GETHISTORY_SOAP_ACTION = "http://NetlynxTech.com/GetHistory";
 	final static public String NOISELYNX_API_GETHISTORY_METHOD_NAME = "GetHistory";
+
 	final static public String NOISELYNX_API_GETTHRESHOLD_SOAP_ACTION = "http://NetlynxTech.com/GetThreshold";
 	final static public String NOISELYNX_API_GETTHRESHOLD_METHOD_NAME = "GetThreshold";
 	final static public String NOISELYNX_API_UPDATELATLONG_SOAP_ACTION = "http://NetlynxTech.com/UpdateLatLong";

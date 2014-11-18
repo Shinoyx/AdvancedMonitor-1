@@ -2,8 +2,7 @@ package com.netlynxtech.advancedmonitor.classes;
 
 import java.io.Serializable;
 
-
-public class Message implements Serializable{
+public class Message implements Serializable {
 	String messageId, eventId, title, timestamp, deviceId, messageType, message, ackRequired, ackDone;
 
 	public String getAckDone() {
