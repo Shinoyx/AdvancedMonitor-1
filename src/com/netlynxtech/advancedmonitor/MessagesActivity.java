@@ -32,6 +32,7 @@ public class MessagesActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		lvMessage = (ListView) findViewById(R.id.lvMessages);
+		box = new DynamicBox(MessagesActivity.this, lvMessage);
 		lvMessage.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -40,7 +41,6 @@ public class MessagesActivity extends ActionBarActivity {
 				startActivity(new Intent(MessagesActivity.this, SubMessagesActivity.class).putExtra("message", m));
 			}
 		});
-		box = new DynamicBox(MessagesActivity.this, lvMessage);
 		mTask = null;
 		mTask = new getMessages();
 		mTask.execute();

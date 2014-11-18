@@ -87,7 +87,6 @@ public class SubMessageAdapter extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 					AlertDialog.Builder alert = new AlertDialog.Builder(context);
-
 					alert.setTitle("Acknowledgement");
 					alert.setMessage("Please acknowledge this alert with your message");
 

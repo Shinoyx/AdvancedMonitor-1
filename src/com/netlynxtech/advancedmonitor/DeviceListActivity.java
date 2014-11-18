@@ -115,11 +115,9 @@ public class DeviceListActivity extends ActionBarActivity {
 			break;
 		case R.id.menu_show_messages:
 			startActivity(new Intent(DeviceListActivity.this, MessagesActivity.class));
-
 			break;
 		case R.id.menu_settings:
 			startActivity(new Intent(DeviceListActivity.this, SettingsActivity.class));
-
 			break;
 		default:
 			return super.onOptionsItemSelected(item);

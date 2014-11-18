@@ -98,6 +98,7 @@ public class MemberAddNewActivity extends ActionBarActivity {
 				public void run() {
 					bSendRequest.setEnabled(true);
 					if (res.equals("success")) {
+
 						Toast.makeText(MemberAddNewActivity.this, "success", Toast.LENGTH_SHORT).show();
 					} else {
 						Toast.makeText(MemberAddNewActivity.this, res, Toast.LENGTH_SHORT).show();

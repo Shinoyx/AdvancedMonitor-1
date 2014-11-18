@@ -25,6 +25,7 @@ import com.netlynxtech.advancedmonitor.classes.Device;
 import com.netlynxtech.advancedmonitor.classes.WebRequestAPI;
 
 public class MapsActivity extends ActionBarActivity {
+
 	private GoogleMap googleMap;
 	Button bUpdateLocation;
 	Device device;
@@ -91,6 +92,7 @@ public class MapsActivity extends ActionBarActivity {
 		mTask = null;
 		mTask = new getLocation();
 		mTask.execute();
+
 	}
 
 	@Override

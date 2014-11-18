@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/bConnect"
         android:layout_below="@+id/bConnect"
-        android:text="Note : User ID is currently hardcoded to my phone number. And Wifi to connect to is hardcoded to connect to 'YEN'"
+        android:text="Note : User ID is currently hardcoded to my phone number. And Wifi to connect to is hardcoded to connect to &apos;YEN&apos;"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

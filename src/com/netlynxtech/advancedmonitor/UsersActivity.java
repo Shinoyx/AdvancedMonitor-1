@@ -15,6 +15,7 @@ import com.netlynxtech.advancedmonitor.classes.DeviceMembers;
 import com.netlynxtech.advancedmonitor.classes.WebRequestAPI;
 
 public class UsersActivity extends ActionBarActivity {
+
 	ArrayList<DeviceMembers> data = new ArrayList<DeviceMembers>();
 	String deviceId;
 	DynamicBox box;
@@ -66,13 +67,9 @@ public class UsersActivity extends ActionBarActivity {
 
 				@Override
 				public void run() {
-					if (data != null && data.size() > 0) {
-						MembersAdapter adapter = new MembersAdapter(UsersActivity.this, data, deviceId);
-						lvUsers.setAdapter(adapter);
-						box.hideAll();
-					} else {
-						box.showExceptionLayout();
-					}
+					MembersAdapter adapter = new MembersAdapter(UsersActivity.this, data, deviceId);
+					lvUsers.setAdapter(adapter);
+					box.hideAll();
 				}
 			});
 		}
