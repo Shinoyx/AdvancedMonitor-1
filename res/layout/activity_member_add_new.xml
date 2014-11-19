@@ -3,6 +3,7 @@
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/test1"
     android:padding="8dp" >
 
     <TextView
@@ -15,6 +16,7 @@
         android:gravity="center_vertical"
         android:text="+65"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -24,7 +26,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="Their Handphone Number"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/etPhoneNumber"
@@ -45,7 +48,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
         android:text="Role to Assign"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
 
     <Spinner
         android:id="@+id/sRoles"
@@ -62,7 +66,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/sRoles"
         android:text="Device to Assign"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
 
     <Spinner
         android:id="@+id/sDevices"

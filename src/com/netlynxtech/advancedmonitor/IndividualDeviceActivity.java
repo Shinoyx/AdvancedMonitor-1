@@ -108,9 +108,9 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 				final EditText etMaxTempThreshold = (EditText) dialog.findViewById(R.id.etMaxTempThreshold);
 				etMaxTempThreshold.setText(device.getTemperatureHi());
 				TextView tvIndicatorMin = (TextView) dialog.findViewById(R.id.tvIndicatorMin);
-				tvIndicatorMin.setText((char) 0x00B0 + "c");
+				tvIndicatorMin.setText((char) 0x00B0 + "C");
 				TextView tvIndicatorMax = (TextView) dialog.findViewById(R.id.tvIndicatorMax);
-				tvIndicatorMax.setText((char) 0x00B0 + "c");
+				tvIndicatorMax.setText((char) 0x00B0 + "C");
 				Button bCancel = (Button) dialog.findViewById(R.id.bCancel);
 				bCancel.setOnClickListener(new OnClickListener() {
 
@@ -201,9 +201,9 @@ public class IndividualDeviceActivity extends ActionBarActivity {
 				final EditText etMaxTempThreshold = (EditText) dialog.findViewById(R.id.etMaxTempThreshold);
 				etMaxTempThreshold.setText(device.getTemperatureHi());
 				TextView tvIndicatorMin = (TextView) dialog.findViewById(R.id.tvIndicatorMin);
-				tvIndicatorMin.setText((char) 0x00B0 + "c");
+				tvIndicatorMin.setText((char) 0x00B0 + "C");
 				TextView tvIndicatorMax = (TextView) dialog.findViewById(R.id.tvIndicatorMax);
-				tvIndicatorMax.setText((char) 0x00B0 + "c");
+				tvIndicatorMax.setText((char) 0x00B0 + "C");
 				Button bCancel = (Button) dialog.findViewById(R.id.bCancel);
 				bCancel.setOnClickListener(new OnClickListener() {
 

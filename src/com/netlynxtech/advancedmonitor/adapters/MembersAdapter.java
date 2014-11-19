@@ -96,10 +96,13 @@ public class MembersAdapter extends BaseAdapter {
 		holder.tvTimestamp.setTextColor(Color.parseColor("#A4A4A4"));
 		if (d.getRole().equals("9")) {
 			holder.tvRole.setText("Administrator");
+			holder.tvRole.setTextColor(Color.RED);
 		} else if (d.getRole().equals("2")) {
 			holder.tvRole.setText("Controller");
+			holder.tvRole.setTextColor(Color.YELLOW);
 		} else if (d.getRole().equals("1")) {
 			holder.tvRole.setText("Viewer");
+			holder.tvRole.setTextColor(Color.GREEN);
 		} else {
 			holder.tvRole.setText("No Access");
 		}

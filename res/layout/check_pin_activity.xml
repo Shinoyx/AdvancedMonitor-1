@@ -2,6 +2,7 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/test1"
     android:orientation="horizontal"
     android:padding="16dp" >
 
@@ -46,7 +47,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/etPinNo"
         android:text="@string/gcm_id_retrieved_waiting"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/etPinNo"

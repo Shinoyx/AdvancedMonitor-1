@@ -97,7 +97,7 @@
         android:layout_alignParentLeft="true"
         android:text="By : "
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#A4A4A4" />
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView2"
@@ -108,6 +108,6 @@
         android:layout_alignParentLeft="true"
         android:text="Role : "
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#A4A4A4" />
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

@@ -30,7 +30,7 @@
             android:id="@+id/rl_device_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/download2" >
+            android:background="@drawable/test1" >
 
             <TextView
                 android:id="@+id/tvDeviceDescription"
